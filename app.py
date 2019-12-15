@@ -1,7 +1,9 @@
 import os
+from datetime import datetime
 
 from flask import Flask, request, jsonify, render_template
 from flask_bootstrap import Bootstrap
+from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from decouple import config
 
@@ -11,13 +13,15 @@ app.config.from_object(config('APP_SETTINGS'))
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 bootstrap = Bootstrap(app)
+moment = Moment(app)
 
 from models import Book
 
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html',
+                           current_time=datetime.utcnow())
 
 
 @app.route('/user/<name>')
