@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask, request, jsonify, render_template
+from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from decouple import config
 
@@ -9,13 +10,19 @@ app = Flask(__name__)
 app.config.from_object(config('APP_SETTINGS'))
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+bootstrap = Bootstrap(app)
 
 from models import Book
 
 
 @app.route('/')
-def hello():
-    return 'Hello World!'
+def index():
+    return render_template('index.html')
+
+
+@app.route('/user/<name>')
+def user(name):
+    return render_template('user.html', name=name)
 
 
 @app.route("/name/<name>")
