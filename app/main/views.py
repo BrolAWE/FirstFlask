@@ -1,5 +1,6 @@
 from datetime import datetime
 from flask import render_template, session, redirect, url_for, flash
+from flask_login import login_required
 
 from app.email import send_email
 from . import main
@@ -29,3 +30,9 @@ def index():
     return render_template('index.html',
                            form=form, name=session.get('name'),
                            known=session.get('known', False), current_time=datetime.utcnow())
+
+
+@main.route('/secret')
+@login_required
+def secret():
+    return 'Only authenticated users are allowed!'
