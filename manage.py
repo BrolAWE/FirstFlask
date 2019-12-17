@@ -11,6 +11,7 @@ manager.add_command('db', MigrateCommand)
 
 if __name__ == '__main__':
     manager.run()
+    app.run()
 
 @manager.command
 def profile(length=25, profile_dir=None):
