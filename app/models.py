@@ -1,4 +1,4 @@
-from app.main.views import db
+from manage import db
 
 
 class Book(db.Model):

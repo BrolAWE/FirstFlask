@@ -2,35 +2,12 @@ from datetime import datetime
 from threading import Thread
 
 from flask import Flask, render_template, session, redirect, url_for
-from flask_bootstrap import Bootstrap
 from flask_mail import Mail, Message
-from flask_migrate import Migrate
-from flask_moment import Moment
-from flask_sqlalchemy import SQLAlchemy
-from decouple import config
 
 from app.main.forms import NameForm
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'hard to guess string'
-
-app.config.from_object(config('APP_SETTINGS'))
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = config('MAIL_USERNAME')
-app.config['MAIL_PASSWORD'] = config('MAIL_PASSWORD')
-app.config['FLASKY_MAIL_SUBJECT_PREFIX'] = '[Alex]'
-app.config['FLASKY_MAIL_SENDER'] = 'Alex <aleksejdelov@gmail.com>'
-app.config['FLASKY_ADMIN'] = config('ALEX_ADMIN')
-db = SQLAlchemy(app)
-bootstrap = Bootstrap(app)
-moment = Moment(app)
-migrate = Migrate(app, db)
-mail = Mail(app)
-
 from app.models import *
+from manage import mail, db, app
 
 
 def send_async_email(app, msg):
