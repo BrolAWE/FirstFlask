@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import render_template, session, redirect, url_for
+from flask import render_template, session, redirect, url_for, flash
 
 from app.email import send_email
 from . import main
@@ -14,6 +14,7 @@ def index():
     if form.validate_on_submit():
         user = User.query.ﬁlter_by(username=form.name.data).ﬁrst()
         if user is None:
+            flash('Новый пользователь!')
             user = User(username=form.name.data)
             db.session.add(user)
             session['known'] = False
