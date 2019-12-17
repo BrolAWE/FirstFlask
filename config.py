@@ -6,7 +6,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config(object):
-    DEBUG = config('DEBUG')
+    DEBUG = True
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     FLASKY_MAIL_SUBJECT_PREFIX = '[Alex]'
     FLASKY_MAIL_SENDER = 'Alex <aleksejdelov@gmail.com>'
@@ -15,10 +15,9 @@ class Config(object):
     MAIL_PORT = 465
     MAIL_USE_TLS = False
     MAIL_USE_SSL = True
-    MAIL_SUPPRESS_SEND = False
     MAIL_USERNAME = config('MAIL_USERNAME')
     MAIL_PASSWORD = config('MAIL_PASSWORD')
-    MAIL_DEBUG = False
+    ADMINS = ['aleksejdelov@gmail.com']
     TESTING = False
     CSRF_ENABLED = True
     SECRET_KEY = 'this-really-needs-to-be-changed'
