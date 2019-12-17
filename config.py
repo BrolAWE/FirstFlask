@@ -48,5 +48,6 @@ class TestingConfig(Config):
 
 
 configg = {
-    'default': Config
+    'default': Config,
+    'testing': TestingConfig
 }
