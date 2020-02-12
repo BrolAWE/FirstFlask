@@ -12,9 +12,8 @@ class Config(object):
     FLASKY_MAIL_SENDER = 'Alex <aleksejdelov@gmail.com>'
     FLASKY_ADMIN = config('ALEX_ADMIN')
     MAIL_SERVER = 'smtp.googlemail.com'
-    MAIL_PORT = 465
-    MAIL_USE_TLS = False
-    MAIL_USE_SSL = True
+    MAIL_PORT = 587
+    MAIL_USE_TLS = True
     MAIL_USERNAME = config('MAIL_USERNAME')
     MAIL_PASSWORD = config('MAIL_PASSWORD')
     ADMINS = ['aleksejdelov@gmail.com']
