@@ -22,6 +22,7 @@ class Config(object):
     SECRET_KEY = 'this-really-needs-to-be-changed'
     SQLALCHEMY_DATABASE_URI = config('DATABASE_URL')
     SQLALCHEMY_TRACK_MODIFICATIONS = True
+    FLASKY_POSTS_PER_PAGE = 20
 
     @staticmethod
     def init_app(app):
